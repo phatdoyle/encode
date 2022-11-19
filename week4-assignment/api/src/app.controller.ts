@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { ethers } from 'ethers';
-import { AppService, CreatePaymentOrderDto, PaymentOrder, RequestPaymentOrderDto } from './app.service';
+import { AppService, CreatePaymentOrderDto, PaymentOrder, RequestPaymentOrderDto, CastVoteDto } from './app.service';
 
 @Controller()
 export class AppController {
@@ -50,5 +50,15 @@ export class AppController {
   @Get("token-address")
   getTokenAddress(){
     return {result: this.appService.getTokenContract()}
+  }
+
+  @Get("ballot-address")
+  getBallotAddress(){
+    return {result: this.appService.getBallotAddress()}
+  }
+
+  @Post("cast-vote")
+  castVote(@Body() body: CastVoteDto): any{
+    return this.appService.castVote(body.proposalId, body.amount)
   }
 }

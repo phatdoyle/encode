@@ -12,7 +12,7 @@
 `npm run start`
 
 To-Do's
-- [ ] Connect Wallet Button (via injected web3 provider)
+- [X] Connect Wallet Button (via injected web3 provider)
 - [X] Create Wallet Button (see class example)
 - [X] Instantiate instance of voting contract on frontend via ethers.js
 - [ ] Create function to call `castVote` function in contract. 

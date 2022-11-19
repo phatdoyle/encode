@@ -19,7 +19,13 @@ export class RequestPaymentOrderDto {
   receiver: string;
 }
 
+export class CastVoteDto {
+  proposalId: number;
+  amount: number
+}
+
 const ERC20VOTES_TOKEN_ADDRESS = "0xd6CD9823d1b9a8F215Fc0230FF712CbA57c53d40"
+const TOKENIZED_BALLOT_ADDRESS = '0xf2c138418408CcBD0C39f09E156e103b4583B7cD'
 
 @Injectable()
 export class AppService {
@@ -78,12 +84,17 @@ export class AppService {
 
   }
 
-  requestTokens(){
-    return true;
+  async castVote(proposalId: number, amount:number){
+    //todo: connect to contract. 
+    return {proposalId, amount}
   }
 
   getTokenContract(){
     return ERC20VOTES_TOKEN_ADDRESS
+  }
+
+  getBallotAddress(){
+    return TOKENIZED_BALLOT_ADDRESS
   }
 
 }

@@ -16,11 +16,17 @@
       <p>Latest Block #{{latestBlock}} on {{network}}</p>
       <div class="card p-2 m-2"> Eth balance: {{etherBalance}}</div>
       <div class="card p-2 m-2"> Voting Power balance: {{votePower}}</div>
-      <div class="card p-2 m-2"> Token balance: </div>
+      <div class="card p-2 m-2"> Token balance: {{tokenBalance}}</div>
+
+
+ 
 
       <p>Vote:</p>
-      <input #voteId type="number" min="0" [max]="votePower" placeholder="0">
-      <button (click)="vote(voteId.value)" type="button" class="btn btn-info btn-sm px-4 mx-2" >Vote</button>
+      <span>Proposal ID</span>
+      <input #proposalId class="input-group-number" min="0" [max]="2" placeholder="0"> <br>  
+      <span class="pt-l">Vote Amount</span>
+      <input #voteAmount class="input-group-number" min="0" [max]="voteAmount" placeholder="0"> <br>
+      <button (click)="vote(proposalId.value, voteAmount.value)" type="button" class="btn btn-info btn-sm px-4 mx-2" >Vote</button>
 
       <p>Request Tokens</p>
      
