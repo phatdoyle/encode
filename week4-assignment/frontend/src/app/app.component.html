@@ -6,13 +6,14 @@
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         
           <button disable type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="createWallet()">Create a Wallet</button>
-          <button type="button" class="btn btn-secondary btn-lg px-4 gap-3" >Connect a Wallet</button>
+          <button type="button" class="btn btn-secondary btn-lg px-4 gap-3" (click)="connectWallet()">Connect a Wallet</button>
         </div>
     </div>
 
     <div *ngIf="wallet">
-      <p class="lead mb-4"> This is your address: {{wallet.address}}</p>
+      <p class="lead mb-4"> This is your address: {{walletAddress}}</p>
       <p class="lead mb-4"> Token Contract Address: {{tokenContractAddress}}</p>
+      <p>Latest Block #{{latestBlock}} on {{network}}</p>
       <div class="card p-2 m-2"> Eth balance: {{etherBalance}}</div>
       <div class="card p-2 m-2"> Voting Power balance: {{votePower}}</div>
       <div class="card p-2 m-2"> Token balance: </div>
