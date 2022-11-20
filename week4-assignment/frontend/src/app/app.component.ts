@@ -31,6 +31,9 @@ export class AppComponent {
   ballotContractAddress: string| undefined; 
   latestBlock: any | undefined; 
   network: any | undefined
+  proposal1: any | undefined
+  proposal2: any | undefined
+  proposal3: any | undefined
 
 
   constructor(private http: HttpClient) { 
@@ -44,6 +47,19 @@ export class AppComponent {
       console.log(ans.result)
       this.ballotContractAddress = ans.result
     })
+    this.http.get<any>("http://localhost:3000/proposals/0").subscribe((ans)=>{
+      console.log(ans)
+      this.proposal1 = ans.result
+    })
+    this.http.get<any>("http://localhost:3000/proposals/1").subscribe((ans)=>{
+      console.log(ans)
+      this.proposal2 = ans.result
+    })
+    this.http.get<any>("http://localhost:3000/proposals/2").subscribe((ans)=>{
+      console.log(ans)
+      this.proposal3 = ans.result
+    })
+ 
   }
 
   //DONE
@@ -144,14 +160,16 @@ export class AppComponent {
 
     //Cast Vote
   vote(proposalId: any, amount: any ){
-
-      
-      
- 
       if(this.ballotContract){
         console.log(this.ballotContract['vote'])
         this.ballotContract['vote'](proposalId, amount)
       }
+  }
+
+  delegateVotes(address:string){
+    if(this.tokenContract){
+      this.tokenContract['delegate'](address)
+    }
   }
 
   request(){

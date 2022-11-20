@@ -47,6 +47,11 @@ export class AppController {
     
   }
 
+  @Get("proposals/:id")
+  getProposal(@Param('id') id:number): any {
+    return this.appService.getProposal(id);
+  }
+
   @Get("token-address")
   getTokenAddress(){
     return {result: this.appService.getTokenContract()}

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
 import * as tokenJson from "./assets/MyERC20.json";
+import * as ballotJson from "./assets/TokenizedBallot.json"
 
 export class PaymentOrder{
   value: number;
@@ -33,6 +34,8 @@ export class AppService {
   provider: ethers.providers.BaseProvider; 
   erc20ContractFactor: ethers.ContractFactory;
   erc20Contract: ethers.Contract;
+  ballotContractFactory: ethers.ContractFactory;
+  ballotContract: ethers.Contract;
   paymentOrder: PaymentOrder[];
 
   constructor(){
@@ -40,7 +43,8 @@ export class AppService {
     this.erc20ContractFactor = new ethers.ContractFactory(tokenJson.abi, tokenJson.bytecode);
     this.paymentOrder = [];
     this.erc20Contract = this.erc20ContractFactor.attach(ERC20VOTES_TOKEN_ADDRESS)
-    //const signer = ethers.Wallet.fromMnemonic(process.env.MNEMONIC)
+    this.ballotContractFactory = new ethers.ContractFactory(ballotJson.abi, ballotJson.bytecode)
+    this.ballotContract = this.ballotContractFactory.attach(TOKENIZED_BALLOT_ADDRESS)
   }
 
   getBlock(blockNumberOrTag: string = 'latest'): Promise<ethers.providers.Block> {
@@ -95,6 +99,14 @@ export class AppService {
 
   getBallotAddress(){
     return TOKENIZED_BALLOT_ADDRESS
+  }
+
+  async getProposal(proposalId: any): Promise <any>{
+
+    const contractInstance = this.ballotContractFactory.attach(TOKENIZED_BALLOT_ADDRESS).connect(this.provider)
+    const proposal = await contractInstance.proposals(proposalId);
+   
+    return {result: ethers.utils.parseBytes32String(proposal[0])}
   }
 
 }

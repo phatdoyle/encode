@@ -17,7 +17,20 @@
       <div class="card p-2 m-2"> Eth balance: {{etherBalance}}</div>
       <div class="card p-2 m-2"> Voting Power balance: {{votePower}}</div>
       <div class="card p-2 m-2"> Token balance: {{tokenBalance}}</div>
-
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            Proposal 1: {{proposal1}}
+          </div>
+          <div class="col-sm">
+            Proposal 2: {{proposal2}}
+          </div>
+          <div class="col-sm">
+            Proposal 3: {{proposal3}}
+          </div>
+        </div>
+      </div>
 
  
 
@@ -26,11 +39,16 @@
       <input #proposalId class="input-group-number" min="0" [max]="2" placeholder="0"> <br>  
       <span >Vote Amount</span>
       <input #voteAmount class="input-group-number" min="0" [max]="voteAmount" placeholder="0"> <br>
-      <button (click)="vote(proposalId.value, voteAmount.value)" type="button" class="btn btn-info btn-sm px-4 mx-2" >Vote</button>
 
-      <p>Request Tokens</p>
-     
-      <button  type="button" class="btn btn-info btn-sm px-4 mx-2" >Request Tokens</button>
+      <button (click)="vote(proposalId.value, voteAmount.value)" type="button" class="btn btn-info btn-sm px-4 mx-2" >Vote</button>
+      <br><br>
+
+      <p>Delegate Votes:</p>
+      <span>Delegate Votes To Address:</span>
+      <input #delegateId class="input-group-string" placeholder="0x00000000000"> <br>  
+      <button (click)="delegateVotes(delegateId.value)" type="button" class="btn btn-info btn-sm px-4 mx-2" >Delegate Votes</button>
+
+    
     </div>
   </div>
   </div>

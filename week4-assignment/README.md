@@ -15,8 +15,8 @@ To-Do's
 - [X] Connect Wallet Button (via injected web3 provider)
 - [X] Create Wallet Button (see class example)
 - [X] Instantiate instance of voting contract on frontend via ethers.js
-- [ ] Create function to call `castVote` function in contract. 
-- [ ] Create function to call `delegateVotes` function in contract. 
+- [X] Create function to call `castVote` function in contract. 
+- [X] Create function to call `delegateVotes` function in contract. 
 - [ ] Create function to call query results from the contract (Need to look more at how that data is stored). 
 
 
