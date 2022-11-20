@@ -20,6 +20,7 @@
     "@angular/router": "^14.2.0",
     "@ng-bootstrap/ng-bootstrap": "^13.1.0",
     "@popperjs/core": "^2.11.6",
+    "bignumber.js": "^9.1.0",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.10.2",
     "ethers": "^5.7.2",

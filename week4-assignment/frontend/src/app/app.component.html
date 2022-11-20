@@ -24,7 +24,7 @@
       <p>Vote:</p>
       <span>Proposal ID</span>
       <input #proposalId class="input-group-number" min="0" [max]="2" placeholder="0"> <br>  
-      <span class="pt-l">Vote Amount</span>
+      <span >Vote Amount</span>
       <input #voteAmount class="input-group-number" min="0" [max]="voteAmount" placeholder="0"> <br>
       <button (click)="vote(proposalId.value, voteAmount.value)" type="button" class="btn btn-info btn-sm px-4 mx-2" >Vote</button>
 
