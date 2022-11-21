@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 
 
 //Group #5 Token Address
-const ERC20VOTES_TOKEN_ADDRESS = "0xd6CD9823d1b9a8F215Fc0230FF712CbA57c53d40"
-const TOKENIZED_BALLOT_ADDRESS = '0xf2c138418408CcBD0C39f09E156e103b4583B7cD'
+const ERC20VOTES_TOKEN_ADDRESS = "0x0CBBA32981898231078CDAD4c621D734492CF02D"
+const TOKENIZED_BALLOT_ADDRESS = '0x4139f19c196D3A51f2Bd8D3386cE2BcFB086e961'
 
 
 @Component({
@@ -34,6 +34,7 @@ export class AppComponent {
   proposal1: any | undefined
   proposal2: any | undefined
   proposal3: any | undefined
+  proposal4: any | undefined
 
 
   constructor(private http: HttpClient) { 
@@ -58,6 +59,10 @@ export class AppComponent {
     this.http.get<any>("http://localhost:3000/proposals/2").subscribe((ans)=>{
       console.log(ans)
       this.proposal3 = ans.result
+    })
+    this.http.get<any>("http://localhost:3000/proposals/3").subscribe((ans)=>{
+      console.log(ans)
+      this.proposal4 = ans.result
     })
  
   }

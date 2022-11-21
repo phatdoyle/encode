@@ -27,7 +27,7 @@ async function deploy() {
   console.log("Deploying Ballot contract");
   console.log("Proposals: ");
   // proposals are passed as arguments when running script on command line
-  const proposals = process.argv.slice(4);
+  const proposals = ["chocolate", "Vanilla"]
   const tokenAddress = process.argv[2];
   const targetBlock = process.argv[3];
   proposals.forEach((element, index) => {
